@@ -1,0 +1,25 @@
+  The first few chapters of this book focus on developing a perspective on the concept of networks in various contexts. 
+One of the first models which was introduced by Barbasi was that of the bridge. A graphical model was used to prove 
+that a series of bridges in a city could not each be crossed without crossing one single birdge multiple times. It was
+concluded that the only solution to this issue was to develop another bridge. While reading, I anticipated that this anecdote
+would be extended to address the issue of networking from a social standpoint. As I predicted, the topic eventually evolved
+to resolving a similar issue in the social setting of a cocktail party. I found it particularly interesting that mathematicians 
+claimed it would take about 30 minutes for a group of 100 people at a cocktail party to establish a "social network". An 
+important point which I think Barabasi should have addressed is the question of each individual's social disposition. If the 
+100 people in the room were randomly selected, the model assumes that there is an even distrubution of "social people" in the 
+sample size, who are likely to network with one another. If one claims that each person would have eventually established 
+a certain amount of links to other people, that inevitably makes that assumption that the individuals in the room are equipped with
+the same social aptitude. Moreover, the motivation for people interacting was not taken into account. I believe the mathematical 
+modeling suggests an interesting phenonmena in terms of randomization of link formation, however, these network links are 
+not completely random. Going back to the cocktail party scenario, one factor which motivates people to socialize is their 
+social skills. Moreover, other factors which govern an individual's inclination to socialize is the other person's social
+status-or even appearance. When a person looks more apporachable or friendly, he or she is more likely to be approached by 
+someone else. 
+    What I found most interesting is the concept of 6/19 degrees of seperation. It is striking that there exists a higher
+ degree of separation between resoucres on the web than humans in the world. I beilieve one possible reason for this is the
+ high volume of resources available on the web which might be completely unrelated to a desired website, but might have a 
+ few similar key words. With intelligent search engines, it easier to arrive at a desired web page while using much fewer 
+ intermediate links. I believe this same ability allows humans to have a very low number of intermediates needed. Humans, on 
+ the other hand, can more intelligently asses whether or not their aqcuiantence will be likely to know the desired recipient 
+ of the letter. This is one factor which allows me to explain why humans have an average of 6 intermediates between
+ any two people while webpages have an average of 19. 
