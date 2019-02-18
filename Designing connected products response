@@ -1,0 +1,30 @@
+  This first chapter focuses on adressing issues to consider when designing Internet of things (IOT) devices. One of the first 
+few conecpts the writer opens with in his disinclination to use the phrase internet of things because it downsplays the 
+potential these "things" have to become part of our physical real world. I would agree with the writer on this point, 
+particularily because IOT devices are spanning a very broad range of devices we interact with in our daily lives. As the writer
+points out, IOT devices are independent of monitors and screens at this point in their evolution. In the preface, 
+the writer emphasizes that there IOT devices are deidgned for consumers, who will purchase the products out of pure interest 
+as opposed to being designed for employees, who will be forced to use them in a work space. This topic of discussion reminded 
+me of the hype curve phenomenon which I studied in my Design and Innovation engineering class. The hype curve is an analysis
+of latest technology developments and plots the popularity of the product against time since its development. A lot of 
+technology peaks expontentially when it is first introduced to the market, and plummets after the peak, eventually leveling off. 
+Cases like this have been observed for technology such as 3D television and virtual reality. Altought the writer is very 
+optimistic about the integration of IOT devices in our daily lives, I am critical about whether or not the "hype" about IOT
+will actually continously increase over time. Especially when the writer began to discuss some devices. For example, a device that 
+can rmeotely open your door when your parcel arrives, or a device which can weigh a person and print their details about BMI, 
+proteint weight etc on an application. These devices definitly sound interesting, however, the question of whether or not they 
+will be utilized by people as often as one hopes begs to be asked. I'm more inclined to believe that IOT devices, like 3D TV 
+have been on a hype curve recently, and will eventually level off. 
+  I appreciate that the writer made a clear distinction between user experience (UX) and user interface (UI). I would not have 
+been able to deudce that the two are in fact slightly different. I also agree with the writer in that optimizing the UX 
+should be one the primary concerns in the process of device development. The subtopic of glitches is also vital to the UX. 
+When implementing IOT devices in our daily lives, it comes with the high expectation from the consumer that their daily 
+acitivities will not be hindered by these applications. People are more likely to be patient with an internet page attempting 
+to load as opposed to waiting for a few minutes until their door unlocks. These are activities which the real world proives 
+without lag. So if IOT devices, can not adhere to the same standard, then their extintion is inevitable. Another important issue which
+the writer brings up is privacy. Although he does not actually this in the first chapter, privacy was mentioned in the table of 
+contents for chapter 11. It came to my surpirse that the writer did not address this as one of the first few topics of discussion. 
+The writer constantly enthusiastically discusses the potential of IOT devices without reservations, however, it is concerning 
+to me as a reader that this topic is not studied as analytically as it should be in order to prevent a bias. On page 8, the writer
+mentions authentifications as a draw back of IOT devices, beacuse they slow down the overall UX. However, it is important 
+to dicuss the comprimise which must be established between privacy and effeciency. 
