@@ -1,2 +1,2 @@
 # NetworkEverything
-here is how you get to [google](http://www.google.com)
+Hello. Here is the link to [my github](https://github.com/ingiebaho/NetworkEverything/edit/master/README.md)
