@@ -1,1 +1,1 @@
-Maria Laura was my partner 
+Maria Laura was my partner and built the transmitter device. 
