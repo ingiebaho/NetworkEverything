@@ -1,3 +1,12 @@
+/*
+  WiFi UDP Tranceiver. Buttons are pushed to activate LED on another arduino. Can also receive byte to activate LEDs
+  Based on UDP Send and Receive String
+
+  created 19 February 2019
+  by Ingie Baho 
+
+*/
+
 #include <SPI.h>
 #include <WiFiNINA.h>
 #include <WiFiUdp.h>
@@ -9,8 +18,8 @@ char ssid[] = SECRET_SSID;        // your network SSID (name)
 char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
 int keyIndex = 0;            // your network key Index number (needed only for WEP)
 
-unsigned int localPort = 2390;      // local port to listen on
-//other code must have 2390 for this instead
+unsigned int localPort = 2390;      // local port to listen on. Other code must have 5000 for this instead
+
 
 char packetBuffer[255]; //buffer to hold incoming packet
 
@@ -43,10 +52,10 @@ void setup() {
   pinMode(YELLOW_LED, OUTPUT);
   
   while (!Serial) {
-    ; // wait for serial port to connect. Needed for natv cive USB port only
+    ; // do nothing until serial port connects
   }
 
-  // check for the presence of the shield:
+  // Some defensive programming. Checking for the presence of the shield:
   if (WiFi.status() == WL_NO_SHIELD) {
     Serial.println("WiFi shield not present");
     // don't continue:
@@ -84,18 +93,23 @@ void setup() {
 
   pinMode(LED_BUILTIN, OUTPUT);
 }
-
+//function to send button states through UDP 
 void sendButtonStates(IPAddress address, unsigned int port){
+  
+  //check current button states
   redButtonState = digitalRead(RED_BUTTON); 
   greenButtonState = digitalRead(GREEN_BUTTON);
   yellowButtonState = digitalRead(YELLOW_BUTTON);
-
+  
+//checking to see if any of the three buttons were pushed
   if(redButtonState != lastRedButtonState || 
   greenButtonState != lastGreenButtonState || 
   yellowButtonState != lastYellowButtonState)
   {
     Udp.beginPacket(address, port);
-
+    
+//send button states through UDP when any button state changed 
+    
     Udp.write(redButtonState);
     if(redButtonState != lastRedButtonState){
       Serial.print("red button state changed; sending new state: ");
@@ -122,7 +136,7 @@ void sendButtonStates(IPAddress address, unsigned int port){
     Udp.endPacket();
   }
 }
-
+//function to receive incoming bytes over UDP and activate LEDs
 void receiveLEDStates(){
   // if there's data available, read a packet
   int packetSize = Udp.parsePacket();
@@ -152,14 +166,13 @@ void receiveLEDStates(){
 void loop() {
   // IP address of the receiving device
   IPAddress receivingDeviceAddress(192, 168, 1, 14);
-  unsigned int receivingDevicePort = 5000;
-  //other code must have 5000 for this instead
+  unsigned int receivingDevicePort = 5000;   //other code must have 2390 for this 
 
   sendButtonStates(receivingDeviceAddress, receivingDevicePort);
   
   receiveLEDStates();
 }
-
+//function to print wifi info
 void printWiFiStatus() {
   // print the SSID of the network you're attached to:
   Serial.print("SSID: ");
@@ -176,6 +189,7 @@ void printWiFiStatus() {
   Serial.print(rssi);
   Serial.println(" dBm");
 }
+//function to print button state info
 void printCurrentButtonState(boolean currentRedButtonState, boolean currentGreenButtonState, boolean currentYellowButtonState){
   Serial.print("red = ");
     Serial.print(currentRedButtonState);
