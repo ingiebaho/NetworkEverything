@@ -5,7 +5,7 @@ let requestStream = request({
   path: "/20_node.html",
   method: "GET",    //get method will retrieve data? 
   headers: {Accept: "text/html"}
-}, response => {  //function that should be called when a response comes in
+}, response => {  //function that should be called when a response comes in, but I dont think I need to accept a reposnse here 
   console.log("Server responded with status code",
               response.statusCode);
 });
