@@ -1,4 +1,4 @@
-## this is a test directory##
+## this is a test directory ##
 
 1. this is the first thing 
 1. this is the second thing
