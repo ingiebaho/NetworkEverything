@@ -26,11 +26,13 @@ char packetBuffer[255]; //buffer to hold incoming packet
 WiFiUDP Udp;
 
 const int sensor1 = 5;
-const int sensor2 = 4;
-const int sensor3 = 3;
+
+
 
 
 void setup() {
+  
+  int userPresent = 0
   
   //Initialize serial and wait for port to open:
   Serial.begin(9600);
@@ -73,19 +75,19 @@ void loop() {
   //read data from humidity sensor 
   //unsure about this syntax
   sensorState1 = digitalRead(sensor1);  //unsure if the sensor is digital or analog, if it's analog, I will only UDP write when humidity is in certain range
-  sensorState2 = digitalRead(sensor1);
-  sensorState3 = digitalRead(sensor1);
-  //print status of sensors 
-  void printSensorStatus(sensorState1, sensorState2, sensorState3)
-
-
   
- 
+  //print status of sensors 
+  void printSensorStatus(sensorState1)
+
+  //if either sensor value is greater than a certain threshold  
+  {
+   userPresent = 1
+}
+
    Udp.beginPacket(receivingDeviceAddress, receivingDevicePort);
 
-   Udp.write(buttonState1);
-   Udp.write(buttonState2);
-   Udp.write(buttonState3);
+   Udp.write(userPresent);
+ 
        
    Udp.endPacket();
   }
@@ -110,7 +112,7 @@ void printWiFiStatus() {
   Serial.println(" dBm");
 }
 
-void printSensorStatus(boolean sensorState1, boolean sensorState2, boolean sensorState3){
+void printSensorStatus(boolean sensorState1){
   Serial.print("Sensor 1: ");
   Serial.print(sensorState1);
   Serial.print("Sensor 2: ");
