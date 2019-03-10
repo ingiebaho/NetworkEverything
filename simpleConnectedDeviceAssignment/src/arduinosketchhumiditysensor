@@ -1,0 +1,120 @@
+/*
+
+  Simple connected device assignment: 
+  Sending data from humidity sensor over UDP. 
+  March 3, 2019
+  By Ingie Baho
+  
+*/
+
+#include <SPI.h>
+#include <WiFiNINA.h>
+#include <WiFiUdp.h>
+
+int status = WL_IDLE_STATUS;
+#include "arduino_secrets.h"
+
+// enter your sensitive data in the Secret tab/arduino_secrets.h
+char ssid[] = SECRET_SSID;        // your network SSID (name)
+char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
+int keyIndex = 0;            // your network key Index number (needed only for WEP)
+
+unsigned int localPort = 5000;      // local port to listen on
+
+char packetBuffer[255]; //buffer to hold incoming packet
+
+WiFiUDP Udp;
+
+const int sensor1 = 5;
+
+
+void setup() {
+  
+  int userPresent = 0
+  
+  //Initialize serial and wait for port to open:
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+
+  // check for the presence of the shield:
+  if (WiFi.status() == WL_NO_SHIELD) {
+    Serial.println("WiFi shield not present");
+    // don't continue:
+    while (true);
+  }
+
+  // attempt to connect to WiFi network:
+  while ( status != WL_CONNECTED) {
+    Serial.print("Attempting to connect to SSID: ");
+    Serial.println(ssid);
+    
+    // Connect to WPA/WPA2 network
+    status = WiFi.begin(ssid, pass);
+
+    // wait 10 seconds for connection:
+    delay(10000);
+  }
+  Serial.println("Connected to wifi");
+  printWiFiStatus();
+
+  Serial.print("Initializing WiFiUDP library and listening on port ");
+  Serial.println(localPort);
+  Udp.begin(localPort);
+}
+
+void loop() {
+  
+  // IP address of the receiving device, change this to the Linux computer's IP address 
+  IPAddress receivingDeviceAddress(192, 168, 1, 15);
+  unsigned int receivingDevicePort = 2390;
+
+  //read data from humidity sensor 
+  //unsure about this syntax
+  sensorState1 = digitalRead(sensor1);  //unsure if the sensor is digital or analog, if it's analog, I will only UDP write when humidity is in certain range
+  
+  //print status of sensors 
+  void printSensorStatus(sensorState1)
+
+  //if either sensor value is greater than a certain threshold  
+  {
+   userPresent = 1
+}
+
+   Udp.beginPacket(receivingDeviceAddress, receivingDevicePort);
+
+   Udp.write(userPresent);
+ 
+       
+   Udp.endPacket();
+  }
+
+
+
+
+void printWiFiStatus() {
+  // print the SSID of the network you're attached to:
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());
+
+  // print your WiFi shield's IP address:
+  IPAddress ip = WiFi.localIP();
+  Serial.print("My IP Address: ");
+  Serial.println(ip);
+
+  // print the received signal strength:
+  long rssi = WiFi.RSSI();
+  Serial.print("signal strength (RSSI):");
+  Serial.print(rssi);
+  Serial.println(" dBm");
+}
+
+void printSensorStatus(boolean sensorState1){
+  Serial.print("Sensor 1: ");
+  Serial.print(sensorState1);
+  Serial.print("Sensor 2: ");
+  Serial.print(sensorState2);
+  Serial.print("Sensor 3: ");
+  Serial.print(sensorState3);
+  }
