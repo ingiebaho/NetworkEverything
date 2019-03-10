@@ -1,1 +1,104 @@
+/*
+
+  Simple connected device assignment: 
+  Sending data from button over TCP. 
+  March 3, 2019
+  By Ingie Baho
+  
+*/
+
+#include <WiFiNINA.h>
+#include "arduino_secrets.h"
+
+// enter your sensitive data in the Secret tab/arduino_secrets.h
+char ssid[] = SECRET_SSID;        // your network SSID (name)
+char pass[] = SECRET_PASS;    // your network password 
+
+int status = WL_IDLE_STATUS;
+
+
+IPAddress server(192, 168, 1, 4); //Linux computer's IP address 
+
+const int serverPort = 8001;
+
+//intitializing client library
+WiFiClient tcpSocket;
+
+const int button = 5;
+
+boolean currentbuttonstate;
+
+boolean lastbuttonstate = LOW;
+  
+
+
+void setup() {
+
+  pinMode(button, INPUT);
+   //Initialize serial and wait for port to open:
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+
+  Serial.begin(9600);
+  Serial.println("Attempting to connect to WPA network...");
+  Serial.print("SSID: ");
+  Serial.println(ssid);
+
+  status = WiFi.begin(ssid, pass);
+  if ( status != WL_CONNECTED) {
+    Serial.println("trouble with WiFi module");
+    // don't do anything else:
+    while (true);
+  }
+
+  Serial.println("Connected to wifi");
+  Serial.println("Opening TCP socket");
+  if (tcpSocket.connect(server, serverPort)) {
+    Serial.println("TCP socket to server established");
+  } else {
+    Serial.println("Error opening TCP socket");
+    // don't do anything else:
+    while (true);
+  }
+
+  // if any errors occurred we would be stuck in one
+  // of the infinite loops, so if we arrived here we're
+  // OK
+  Serial.println("Everything seems OK, finished setup");
+}
+
+void loop() {
+  
+ byte message[5]; //defining the message we are sending from the arduino to the server program 
+
+ currentbuttonstate = digitalRead(button);
+
+ if(currentbuttonstate != lastbuttonstate){ //checking to see if button was pushed
+  
+  message[0] = 0x01;
+  message[1] = currentbuttonstate;
+  message[2] = 0;
+  message[3] = 0;
+  message[4] = 0xFF;
+ }
+
+  for (int i = 0; i < 5; i++) {
+    tcpSocket.write(message[i]);
+    Serial.print("sent message byte: ");
+    Serial.print(i);
+    Serial.print(" value: ");
+    Serial.print(message[i], HEX);
+    Serial.println();
+  }
+  delay(1000);
+
+  // could close the socket if we want, 
+  // but then we'd have to open it again
+  // tcpSocket.stop();
+}
+  }
+
+
 
