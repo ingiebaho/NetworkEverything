@@ -53,24 +53,14 @@ arduinoServer.on('connection', (socket) => {
   console.log("arduinoServer: A client has connected")
 
   socket.on('data',function(data){
-    var numBytesRead = socket.bytesRead;
+    var numBytesRead = socket.bytesRead;	//reading bytes sent via TCP socket from arduino
     console.log('Bytes read: ' + 
-	    	numBytesRead + 
+	    	numBytesRead + 	//should have received 5 bytes from arduino 
 	    	' buffer length: ' + 
-	    	data.length);
+	    	data.length);	//whats the difference between data length and numbytesread?
   
-    //for (ii = 0; ii < data.length; ii++) {
-	  //console.log(data.readUInt8(ii));
-    //};
-	  console.log(data.toString('hex'));
-
-  }); // end of socket.on'data'
-
-  socket.on('end', data => {
-    console.log("arduinoServer: client has disconnected");
-  });
-}); // end of socket.on('connection')
-
+   //read bytes sent from arduino one by one 
+	  
 arduinoServer.listen(ARDUINO_PORT, () => {
 
   var arduinoServerInfo = arduinoServer.address();
