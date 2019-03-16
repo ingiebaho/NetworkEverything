@@ -68,6 +68,11 @@ function ArduinoUDPServerReceivedMessage(message, sender) {
 		// Now send a message to client.js
 		webSocket.emit('button3', 3);
 	}
+	if (message.readUInt8(0) == 0 && message.readUInt8(1) == 0 && message.readUInt8(2) == 0 ) {
+		console.log( "all buttons are off");
+		// Now send a message to client.js
+		webSocket.emit('allOff', 0);
+	}
 
 	
 }
@@ -88,8 +93,8 @@ httpServer.on('connection', () => {
 });
 
 
-// Websocket event handler 
-// for UDP messages coming from the browser
+/* Websocket event handler for UDP messages coming from the browser
+ which is something I dont need
 
 webSocket.on('connect', (socket) => {
 	// array for the message
@@ -105,5 +110,5 @@ webSocket.on('connect', (socket) => {
 
   socket.on('disconnect', () => {
     console.log('Web server socket: user disconnected');
-  });
-});
+  }); 
+}); */
