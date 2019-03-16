@@ -21,7 +21,7 @@ socket.on('button3', (data) => {
     displayImage3();
 });
 
-socket.on('alloff', (data) => {
+socket.on('allOff', (data) => {
 	console.log('all buttons are off: ' + data);
     hideTheImage();
 });
