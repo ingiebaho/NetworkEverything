@@ -1,8 +1,49 @@
-function ledON() {
-    console.log ("sending a message to turn on the LED");
+/* 
+This is the websocket library which will allow us to send messages
+back to the web server 
+*/
+
+var socket = io();
+
+
+socket.on('button1', (data) => {
+	console.log('received button 1 pressed event from webserver: ' + data);
+	displayImage1();
+});
+
+socket.on('button2', (data) => {
+	console.log('received button 2 pressed from webserver: ' + data);
+	displayImage2();
+});
+
+socket.on('button3', (data) => {
+	console.log('received button 3 pressed from webserver: ' + data);
+    displayImage3();
+});
+
+function displayImage1 () {
+	var placeholder = document.getElementById("placeholder");
+
+	placeholder.src = "one.jpeg"; // put images in public folder
+
+	placeholder.style.opacity = 100;
 }
 
-function ledOFF() {
-    console.log ("sending a message to turn off the LED");
+function displayImage2 () {
+	var placeholder = document.getElementById("placeholder");
+
+	placeholder.src = "two.jpeg"; // put images in public folder
+
+	placeholder.style.opacity = 100;
 }
+
+function displayImage3 () {
+	var placeholder = document.getElementById("placeholder");
+
+	placeholder.src = "three.jpeg"; // put images in public folder
+
+	placeholder.style.opacity = 100;
+}
+
+
 
