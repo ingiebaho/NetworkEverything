@@ -1,8 +1,7 @@
 /*
 
-  Simple connected device assignment: 
-  Sending data from humidity sensor over UDP. 
-  For now it just send 0 or 1 for the push of a button. Will implement humidity sensor after I make sure this works. 
+  Simple connected device assignment:  
+  For now it just send 0 or 1 for the push of some buttons. Will implement humidity sensor after I make sure this works. 
   March 3, 2019
   By Ingie Baho
   
@@ -21,23 +20,28 @@ char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as k
 int keyIndex = 0;            // your network key Index number (needed only for WEP)
 
 //local port to listen on, not needed for now
-//unsigned int localPort = 5000;      
+unsigned int localPort = 5000;      
 
 //buffer to hold incoming packet, not needed for now 
-//char packetBuffer[255];  
+char packetBuffer[255];  
 
 WiFiUDP Udp;
 
 //sensors, will add more 
-const int button1 = 5;
+const int button1 = 0;
+const int button2 = 1;
+const int button3 = 2;
 
 // remember the button state so we only send
 // when the state changes
-boolean buttonState;
-boolean lastButtonState = LOW; // arbitrary
+boolean buttonState1;
+boolean lastButtonState1 = LOW; // arbitrary
+boolean buttonState2;
+boolean lastButtonState2 = LOW;
+boolean buttonState3;
+boolean lastButtonState3 = LOW;
 
 void setup() {
-  
   
   
   //Initialize serial and wait for port to open:
@@ -64,6 +68,7 @@ void setup() {
     // wait 10 seconds for connection:
     delay(10000);
   }
+  
   Serial.println("Connected to wifi");
   printWiFiStatus();
 
@@ -74,26 +79,34 @@ void setup() {
 
 void loop() {
   
-  // IP address of the receiving device, change this to the Linux computer's IP address 
-  IPAddress receivingDeviceAddress(192, 168, 1, 15);
+  // IP address of the receiving device, Linux computer's IP address (mine for now because Linux is dead)
+  IPAddress receivingDeviceAddress(192, 168, 1, 17); 
   unsigned int receivingDevicePort = 2390;
 
-  //read data from button
-  buttonState = digitalRead(button1);  //checking button state
+  //read data from buttons
+  buttonState1 = digitalRead(button1); 
+  buttonState2 = digitalRead(button2); 
+  buttonState3 = digitalRead(button3); 
   
-  //print status of sensors 
-  void printSensorStatus(buttonState)
+  //print status of buttons  
+  
 
-  if (buttonState != lastButtonState) 
+  if ((buttonState1 ! = lastButtonState1) || (buttonState2 ! = lastButtonState2) || (buttonState3 ! = lastButtonState3) ) 
   {
-   
-
+   void printButtonStatus(buttonState1, buttonState2, buttonState3)
+    
    Udp.beginPacket(receivingDeviceAddress, receivingDevicePort);
 
-   Udp.write(buttonState);
- 
-       
+   Udp.write(buttonState1);
+   Udp.write(buttonState2);
+   Udp.write(buttonState3);
+   
    Udp.endPacket();
+   
+   lastButtonState1 =  buttonState1;
+   lastButtonState2 =  buttonState2;
+   lastButtonState3 =  buttonState3;
+   
   }
 
 
@@ -116,11 +129,11 @@ void printWiFiStatus() {
   Serial.println(" dBm");
 }
 
-void printSensorStatus(boolean sensorState1){
-  Serial.print("Sensor 1: ");
-  Serial.print(sensorState1);
-  Serial.print("Sensor 2: ");
-  Serial.print(sensorState2);
-  Serial.print("Sensor 3: ");
-  Serial.print(sensorState3);
+void printButtonStatus(boolean buttonState1, boolean buttonState2, boolean buttonState3){
+  Serial.print("Button 1: ");
+  Serial.print(buttonState1);
+  Serial.print("Button 2: ");
+  Serial.print(buttonState2);
+  Serial.print("Button 3: ");
+  Serial.print(buttonState3);
   }
