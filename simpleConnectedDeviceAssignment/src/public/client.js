@@ -21,6 +21,13 @@ socket.on('button3', (data) => {
     displayImage3();
 });
 
+socket.on('alloff', (data) => {
+	console.log('all buttons are off: ' + data);
+    hideTheImage();
+});
+
+
+
 function displayImage1 () {
 	var placeholder = document.getElementById("placeholder");
 
@@ -43,6 +50,12 @@ function displayImage3 () {
 	placeholder.src = "three.jpeg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
+}
+
+function hideTheImage () {
+	var placeholder = document.getElementById("placeholder");
+
+	placeholder.style.opacity = 0;
 }
 
 
