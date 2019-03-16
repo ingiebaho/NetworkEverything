@@ -2,6 +2,7 @@
 
   Simple connected device assignment: 
   Sending data from humidity sensor over UDP. 
+  For now it just send 0 or 1 for the push of a button. Will implement humidity sensor after I make sure this works. 
   March 3, 2019
   By Ingie Baho
   
@@ -19,18 +20,25 @@ char ssid[] = SECRET_SSID;        // your network SSID (name)
 char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
 int keyIndex = 0;            // your network key Index number (needed only for WEP)
 
-unsigned int localPort = 5000;      // local port to listen on
+//local port to listen on, not needed for now
+//unsigned int localPort = 5000;      
 
-char packetBuffer[255]; //buffer to hold incoming packet
+//buffer to hold incoming packet, not needed for now 
+//char packetBuffer[255];  
 
 WiFiUDP Udp;
 
-const int sensor1 = 5;
+//sensors, will add more 
+const int button1 = 5;
 
+// remember the button state so we only send
+// when the state changes
+boolean buttonState;
+boolean lastButtonState = LOW; // arbitrary
 
 void setup() {
   
-  int userPresent = 0
+  
   
   //Initialize serial and wait for port to open:
   Serial.begin(9600);
@@ -70,21 +78,19 @@ void loop() {
   IPAddress receivingDeviceAddress(192, 168, 1, 15);
   unsigned int receivingDevicePort = 2390;
 
-  //read data from humidity sensor 
-  //unsure about this syntax
-  sensorState1 = digitalRead(sensor1);  //unsure if the sensor is digital or analog, if it's analog, I will only UDP write when humidity is in certain range
+  //read data from button
+  buttonState = digitalRead(button1);  //checking button state
   
   //print status of sensors 
-  void printSensorStatus(sensorState1)
+  void printSensorStatus(buttonState)
 
-  //if either sensor value is greater than a certain threshold  
+  if (buttonState != lastButtonState) 
   {
-   userPresent = 1
-}
+   
 
    Udp.beginPacket(receivingDeviceAddress, receivingDevicePort);
 
-   Udp.write(userPresent);
+   Udp.write(buttonState);
  
        
    Udp.endPacket();
