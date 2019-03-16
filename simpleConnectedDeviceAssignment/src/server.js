@@ -1,75 +1,109 @@
-/* 
-first you can find your IP address with:
+/*
+	UDP And HTTP Server
+	Context: node.js
+	
+	Receive data from Arduino 
+	Serve a web page to a browser displaying information decided by Arduino 
+	
+	Web server provided by modules "http" and "express"
 
-	ifconfig
+	Communication with Arduino is via a UDP socket
+	provided by module "dgram"
 
-then, in the terminal, run this server with:
+	Communication with the web client (web browser) 
+	is via a UDP socket provided by webSockets.
+	Websockets creates a socket on top of the HTTP protocol
+	The webSockets module is "socket.io"
 
-	node server.js
-
-connect using a browser to
-
-	http://192.168.1.4:8080
-
+	created 16 March 2019
+	by Ingie Baho
 */
 
-	
-// For the HTTP server
+
+/* UDP server talks to Arduino */
+var dgram = require('dgram');
+var arduinoUDPServer = dgram.createSocket('udp4')
+var MY_PORT_FOR_ARDUINO = 2390;	//should be receiving port in Adruino sketch  
+
+/* This is for server to talk to Arduino, which I dont need now   
+var ARDUINO_PORT_FOR_ME= 5000; 
+var ARDUINO_IP_ADDRESS = '192.168.1.4';
+*/ 
+
+/* HTTP server talks to browser */
 const http = require('http')
 const express = require('express'); // web server application
 const app = express();        // instantiate express server
-const webServer = http.Server(app);  // connects http library to server
-const HTTP_PORT=7000;
+const httpServer = http.Server(app);  // connects http library to server
+const HTTP_SERVER_PORT = 8000; 
 
-// For the TCP server
-const ARDUINO_PORT=8001;
+// Express creates the simple web page
+// The argument says where to find pages and scripts
+app.use(express.static('public'));  
 
+// websockets so that webpage can talk back to server
+const webSocket = require('socket.io')(httpServer);  
 
-/*
-	The HTTP server
-*/
-app.use(express.static('public'));  // find pages in public directory
+/* Arduino UDP server callback functions */
 
-webServer.listen(HTTP_PORT, () => {
-  console.log('webServer: Listening at', webServer.address());
+function ArduinoUDPServerIsListening() {
+	console.log('Arduino UDP Server is listening');
+}
+
+function ArduinoUDPServerReceivedMessage(message, sender) {
+
+	// Read the messages received from arudino and check which button which pushed 
+	if (message.readUInt8(0) == 1 ) {
+		console.log( "button 1 pushed");
+		// Now send a message to client.js
+		webSocket.emit('button1', 1);
+	}
+	if (message.readUInt8(1) == 1 ) {
+		console.log( "button 2 pushed");
+		// Now send a message to client.js
+		webSocket.emit('button2', 2);
+	}
+	if (message.readUInt8(2) == 1 ) {
+		console.log( "button 3 pushed");
+		// Now send a message to client.js
+		webSocket.emit('button3', 3);
+	}
+
+	
+}
+
+/* Register the UDP callback functions */
+arduinoUDPServer.bind( MY_PORT_FOR_ARDUINO );
+arduinoUDPServer.on( 'listening', ArduinoUDPServerIsListening);
+arduinoUDPServer.on( 'message', ArduinoUDPServerReceivedMessage);
+
+/* HTTP callback functions */
+
+httpServer.listen(HTTP_SERVER_PORT, () => {
+	console.log('web server: Listening at', httpServer.address());
 });
 
-webServer.on('connection', (socket) => {
-  console.log("webServer: An HTTP client has connected")
+httpServer.on('connection', () => {
+  console.log("web server: An HTTP client has connected")
 });
 
 
-/*
-	The TCP server
-*/
+// Websocket event handler 
+// for UDP messages coming from the browser
 
-// import the net module
-const { createServer } = require('net');
-
-// create and return a net.Server object
-const arduinoServer = createServer();
-
-arduinoServer.on('connection', (socket) => {
-  console.log("arduinoServer: A client has connected")
-
-  socket.on('data',function(data){
-    var numBytesRead = socket.bytesRead;	//reading bytes sent via TCP socket from arduino
-    console.log('Bytes read: ' + 
-	    	numBytesRead + 	//should have received 5 bytes from arduino 
-	    	' buffer length: ' + 
-	    	data.length);	//whats the difference between data length and numbytesread?
+webSocket.on('connect', (socket) => {
+	// array for the message
+	// newLEDState[0] = LED number 
+	// newLEDState[1] = LED state 
+	const SIZEOF_LED_DATA = 2;
+	var newLEDState = new Uint8Array(SIZEOF_LED_DATA ); 
   
-   //read bytes sent from arduino one by one 
-	  
-arduinoServer.listen(ARDUINO_PORT, () => {
+	console.log('Web server socket: Client connected');
 
-  var arduinoServerInfo = arduinoServer.address();
 
-  var arduinoServerInfoJson = JSON.stringify(arduinoServerInfo);
+  // if you get the 'disconnect' message, say the user disconnected
 
-  console.log('arduinoServer: Listening at : ' + arduinoServerInfoJson );
-
-  arduinoServer.on('error', function (error) {
-    console.error(JSON.stringify(error));
- });
+  socket.on('disconnect', () => {
+    console.log('Web server socket: user disconnected');
+  });
 });
