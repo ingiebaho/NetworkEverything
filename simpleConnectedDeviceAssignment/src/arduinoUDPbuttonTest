@@ -43,6 +43,7 @@ boolean buttonState3;
 boolean lastButtonState3 = LOW;
 
 void setup() {
+
   
   //Initialize serial and wait for port to open:
   Serial.begin(9600);
@@ -89,11 +90,10 @@ void loop() {
   buttonState3 = digitalRead(button3); 
   
   //checking if a button was pushed 
-  if ((buttonState1 ! = lastButtonState1) || (buttonState2 ! = lastButtonState2) || (buttonState3 ! = lastButtonState3) ) 
-  {
+  if ((buttonState1 != lastButtonState1) || (buttonState2 != lastButtonState2) || (buttonState3 != lastButtonState3) ) {
     //print button states 
     
-   void printButtonStatus(buttonState1, buttonState2, buttonState3)
+   printButtonStatus(buttonState1, buttonState2, buttonState3);
     
    Udp.beginPacket(receivingDeviceAddress, receivingDevicePort);
 
@@ -109,7 +109,7 @@ void loop() {
    
   }
 
-
+}
 
 
 void printWiFiStatus() {
