@@ -39,7 +39,7 @@ function displayImage1 () {
 function displayImage2 () {
 	var placeholder = document.getElementById("placeholder");
 
-	placeholder.src = "two.jpeg"; // put images in public folder
+	placeholder.src = "two.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
 }
@@ -47,7 +47,7 @@ function displayImage2 () {
 function displayImage3 () {
 	var placeholder = document.getElementById("placeholder");
 
-	placeholder.src = "three.jpeg"; // put images in public folder
+	placeholder.src = "three.png"; // put images in public folder
 
 	placeholder.style.opacity = 100;
 }
