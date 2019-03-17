@@ -93,8 +93,8 @@ httpServer.on('connection', () => {
 });
 
 
- Websocket event handler for UDP messages coming from the browser
- which is something I dont need
+ //Websocket event handler for UDP messages coming from the browser
+ //which is something I dont need
 
 webSocket.on('connect', (socket) => {
 	// array for the message
