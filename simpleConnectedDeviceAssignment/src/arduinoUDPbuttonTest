@@ -81,7 +81,7 @@ void setup() {
 void loop() {
   
   // IP address of the receiving device, Linux computer's IP address (mine for now because Linux is dead)
-  IPAddress receivingDeviceAddress(192, 168, 1, 17); 
+  IPAddress receivingDeviceAddress(192, 168, 1, 6); 
   unsigned int receivingDevicePort = 2390;  //should be the same in server.js code 
 
   //read data from buttons
