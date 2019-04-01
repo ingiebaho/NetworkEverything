@@ -27,6 +27,8 @@ socket.on('allOff', (data) => {
 });
 
 
+var myAudio = document.getElementById("myAudio");
+myAudio.stop(); 
 
 function displayImage1 () {
 	var placeholder = document.getElementById("placeholder");
