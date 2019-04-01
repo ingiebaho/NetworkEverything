@@ -34,6 +34,9 @@ function displayImage1 () {
 	placeholder.src = "one.jpeg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
+	
+	var myAudio = document.getElementById("myAudio");
+	myAudio.src = "theOne.mp3";
 }
 
 function displayImage2 () {
