@@ -37,6 +37,7 @@ function displayImage1 () {
 	
 	var myAudio = document.getElementById("myAudio");
 	myAudio.src = "theOne.mp3";
+	myAudio.play(); 
 }
 
 function displayImage2 () {
