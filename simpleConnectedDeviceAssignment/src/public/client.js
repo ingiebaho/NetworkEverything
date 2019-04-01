@@ -33,7 +33,7 @@ myAudio.stop();
 function displayImage1 () {
 	var placeholder = document.getElementById("placeholder");
 
-	placeholder.src = "one.jpeg"; // put images in public folder
+	placeholder.src = "space.jpeg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
 	
@@ -45,7 +45,7 @@ function displayImage1 () {
 function displayImage2 () {
 	var placeholder = document.getElementById("placeholder");
 
-	placeholder.src = "two.jpg"; // put images in public folder
+	placeholder.src = "woods.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
 }
@@ -53,7 +53,7 @@ function displayImage2 () {
 function displayImage3 () {
 	var placeholder = document.getElementById("placeholder");
 
-	placeholder.src = "three.jpg"; // put images in public folder
+	placeholder.src = "grave.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
 }
