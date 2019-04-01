@@ -27,7 +27,7 @@ socket.on('allOff', (data) => {
 });
 
 
-var myAudio = document.getElementById("myAudio");
+
 myAudio.stop(); 
 
 function displayImage1 () {
@@ -60,7 +60,8 @@ function displayImage3 () {
 
 function hideTheImage () {
 	var placeholder = document.getElementById("placeholder");
-
+	var myAudio = document.getElementById("myAudio");
+	myAudio.stop(); 
 	placeholder.style.opacity = 0;
 }
 
