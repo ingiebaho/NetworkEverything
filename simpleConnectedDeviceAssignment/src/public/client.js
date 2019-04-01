@@ -47,7 +47,7 @@ function displayImage2 () {
 function displayImage3 () {
 	var placeholder = document.getElementById("placeholder");
 
-	placeholder.src = "three.png"; // put images in public folder
+	placeholder.src = "three.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
 }
