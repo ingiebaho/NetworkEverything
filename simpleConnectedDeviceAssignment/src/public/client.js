@@ -60,9 +60,12 @@ function displayImage3 () {
 
 function hideTheImage () {
 	var placeholder = document.getElementById("placeholder");
-	var myAudio = document.getElementById("myAudio");
-	myAudio.stop(); 
 	placeholder.style.opacity = 0;
+	
+	var myAudio = document.getElementById("myAudio");
+	myAudio.src = "theOne.mp3";
+	myAudio.stop(); 
+	
 }
 
 
