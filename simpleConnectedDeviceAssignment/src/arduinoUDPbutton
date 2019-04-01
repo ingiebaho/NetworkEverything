@@ -36,11 +36,11 @@ const int button3 = 2;
 // when the state changes
 
 boolean buttonState1;
-boolean lastButtonState1 = LOW; // arbitrary
+boolean lastButtonState1 = 0; // arbitrary
 boolean buttonState2;
-boolean lastButtonState2 = LOW;
+boolean lastButtonState2 = 0;
 boolean buttonState3;
-boolean lastButtonState3 = LOW;
+boolean lastButtonState3 = 0;
 
 void setup() {
 
@@ -88,11 +88,15 @@ void loop() {
   buttonState1 = digitalRead(button1); 
   buttonState2 = digitalRead(button2); 
   buttonState3 = digitalRead(button3); 
-  
+  /*Serial.println(buttonState1);
+  Serial.println(buttonState2);
+  Serial.println(buttonState3);*/
+
+    
   //checking if a button was pushed 
   if ((buttonState1 != lastButtonState1) || (buttonState2 != lastButtonState2) || (buttonState3 != lastButtonState3) ) {
     //print button states 
-    
+   
    printButtonStatus(buttonState1, buttonState2, buttonState3);
     
    Udp.beginPacket(receivingDeviceAddress, receivingDevicePort);
