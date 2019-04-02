@@ -49,7 +49,7 @@ function displayImage2 () {
 
 	placeholder.style.opacity = 100;
 	var myAudio = document.getElementById("myAudio");
-	myAudio.src = "woods.mp3";
+	myAudio.src = "theOne.mp3";
 	myAudio.play(); 
 }
 
