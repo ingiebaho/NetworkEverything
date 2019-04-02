@@ -33,7 +33,7 @@ myAudio.stop();
 function displayImage1 () {
 	var placeholder = document.getElementById("placeholder");
 
-	placeholder.src = "space.jpeg"; // put images in public folder
+	placeholder.src = "space.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
 	
