@@ -38,7 +38,7 @@ function displayImage1 () {
 	placeholder.style.opacity = 100;
 	
 	var myAudio = document.getElementById("myAudio");
-	myAudio.src = "theOne.mp3";
+	myAudio.src = "space.mp3";
 	myAudio.play(); 
 }
 
@@ -48,6 +48,9 @@ function displayImage2 () {
 	placeholder.src = "woods.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
+	var myAudio = document.getElementById("myAudio");
+	myAudio.src = "woods.mp3";
+	myAudio.play(); 
 }
 
 function displayImage3 () {
@@ -56,6 +59,9 @@ function displayImage3 () {
 	placeholder.src = "grave.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
+	var myAudio = document.getElementById("myAudio"); 
+	myAudio.src = "grave.mp3";
+	myAudio.play(); 
 }
 
 function hideTheImage () {
