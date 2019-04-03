@@ -38,7 +38,7 @@ function displayImage1 () {
 	placeholder.style.opacity = 100;
 	
 	var myAudio = document.getElementById("myAudio");
-	myAudio.src = "theOne.mp3";
+	myAudio.src = "space.mp3";
 	myAudio.play(); 
 }
 
