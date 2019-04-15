@@ -68,9 +68,9 @@ function hideTheImage () {
 	var placeholder = document.getElementById("placeholder");
 	placeholder.style.opacity = 0;
 	
-	var myAudio = document.getElementById("myAudio");
-	myAudio.src = "theOne.mp3";
-	myAudio.stop(); 
+	//var myAudio = document.getElementById("myAudio");
+	//myAudio.src = "theOne.mp3";
+	//myAudio.stop(); 
 	
 }
 
