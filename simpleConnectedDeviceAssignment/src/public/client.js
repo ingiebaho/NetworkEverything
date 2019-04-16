@@ -48,8 +48,8 @@ var myAudio3 = document.getElementById("myAudio3");
 	placeholder.style.opacity = 100;
 	
 	myAudio1.play();
-	myAudio2.stop();
-	myAudio3.stop();
+	myAudio2.pause();
+	myAudio3.pause();
 }
 
 function displayImage2 () {
@@ -67,9 +67,9 @@ var myAudio3 = document.getElementById("myAudio3");
 	placeholder.src = "woods.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
-	myAudio1.stop();
+	myAudio1.pause();
 	myAudio2.play();
-	myAudio3.stop();
+	myAudio3.pause();
 }
 
 function displayImage3 () {
@@ -87,8 +87,8 @@ var myAudio3 = document.getElementById("myAudio3");
 	placeholder.src = "grave.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
-	myAudio1.stop();
-	myAudio2.stop();
+	myAudio1.pause();
+	myAudio2.pause();
 	myAudio3.play(); 
 }
 
@@ -106,9 +106,9 @@ var myAudio3 = document.getElementById("myAudio3");
 	var placeholder = document.getElementById("placeholder");
 	placeholder.style.opacity = 0;
 	
-	myAudio1.stop();
-	myAudio2.stop();
-	myAudio3.stop();  
+	myAudio1.pause();
+	myAudio2.pause();
+	myAudio3.pause();  
 	
 }
 
