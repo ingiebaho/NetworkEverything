@@ -28,13 +28,13 @@ socket.on('allOff', (data) => {
 
 
 var myAudio1 = document.getElementById("myAudio1");
-myAudio1.src = "space.mp3";
+//myAudio1.src = "space.mp3";
 
 var myAudio2 = document.getElementById("myAudio2");
-myAudio2.src = "woods.mp3";
+//myAudio2.src = "woods.mp3";
 
 var myAudio3 = document.getElementById("myAudio3");
-myAudio3.src = "grave.mp3";
+//myAudio3.src = "grave.mp3";
 
 
 
