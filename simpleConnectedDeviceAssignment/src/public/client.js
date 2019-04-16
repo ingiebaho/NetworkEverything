@@ -27,8 +27,16 @@ socket.on('allOff', (data) => {
 });
 
 
+var myAudio1 = document.getElementById("myAudio1");
+myAudio1.src = "space.mp3";
 
-myAudio.stop(); 
+var myAudio2 = document.getElementById("myAudio2");
+myAudio2.src = "woods.mp3";
+
+var myAudio3 = document.getElementById("myAudio3");
+myAudio3.src = "grave.mp3";
+
+
 
 function displayImage1 () {
 	var placeholder = document.getElementById("placeholder");
@@ -37,9 +45,9 @@ function displayImage1 () {
 
 	placeholder.style.opacity = 100;
 	
-	var myAudio = document.getElementById("myAudio");
-	myAudio.src = "space.mp3";
-	myAudio.play(); 
+	myAudio1.play();
+	myAudio2.stop();
+	myAudio3.stop();
 }
 
 function displayImage2 () {
@@ -48,9 +56,9 @@ function displayImage2 () {
 	placeholder.src = "woods.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
-	var myAudio = document.getElementById("myAudio");
-	myAudio.src = "woods.mp3";
-	myAudio.play(); 
+	myAudio1.stop();
+	myAudio2.play();
+	myAudio3.stop();
 }
 
 function displayImage3 () {
@@ -59,18 +67,18 @@ function displayImage3 () {
 	placeholder.src = "grave.jpg"; // put images in public folder
 
 	placeholder.style.opacity = 100;
-	var myAudio = document.getElementById("myAudio"); 
-	myAudio.src = "grave.mp3";
-	myAudio.play(); 
+	myAudio1.stop();
+	myAudio2.stop();
+	myAudio3.play(); 
 }
 
 function hideTheImage () {
 	var placeholder = document.getElementById("placeholder");
 	placeholder.style.opacity = 0;
 	
-	//var myAudio = document.getElementById("myAudio");
-	//myAudio.src = "theOne.mp3";
-	//myAudio.stop(); 
+	myAudio1.stop();
+	myAudio2.stop();
+	myAudio3.stop();  
 	
 }
 
