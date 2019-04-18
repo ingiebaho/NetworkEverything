@@ -1,0 +1,158 @@
+/* Use a photoresistor (or photocell) to turn on an LED in the dark
+   More info and circuit schematic: http://www.ardumotive.com/how-to-use-a-photoresistor-en.html
+   Dev: Michalis Vasilakis // Date: 8/6/2015 // www.ardumotive.com */
+   
+
+//Constants
+
+#include <SPI.h>
+#include <WiFiNINA.h>
+#include <WiFiUdp.h>
+
+int status = WL_IDLE_STATUS;
+#include "arduino_secrets.h"
+
+// enter your sensitive data in the Secret tab/arduino_secrets.h
+char ssid[] = SECRET_SSID;        // your network SSID (name)
+char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
+
+
+//local port to listen on, not needed for now
+unsigned int localPort = 5000;      
+
+//buffer to hold incoming packet, not needed for now 
+char packetBuffer[255];  
+
+WiFiUDP Udp;
+
+const int pResistor1 = A1; // Photoresistor at Arduino analog pin A0
+const int pResistor2 = A2;
+const int pResistor3 = A3;
+
+//Variables
+int value1;          // Store value from photoresistor (0-1023)
+int value2; 
+int value3;
+
+//initializing sensors as off
+boolean sensor1 = 0;
+boolean sensor2 = 0;
+boolean sensor3 = 0;
+
+void setup(){
+ 
+ pinMode(pResistor1, INPUT);// Set pResistor - A0 pin as an input (optional)
+ pinMode(pResistor2, INPUT);// Set pResistor - A0 pin as an input (optional)
+ pinMode(pResistor3, INPUT);// Set pResistor - A0 pin as an input (optional)
+
+  //Initialize serial and wait for port to open:
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+
+  // check for the presence of the shield:
+  if (WiFi.status() == WL_NO_SHIELD) {
+    Serial.println("WiFi shield not present");
+    // don't continue:
+    while (true);
+  }
+
+  // attempt to connect to WiFi network:
+  while ( status != WL_CONNECTED) {
+    Serial.print("Attempting to connect to SSID: ");
+    Serial.println(ssid);
+    
+    // Connect to WPA/WPA2 network
+    status = WiFi.begin(ssid, pass);
+
+    // wait 10 seconds for connection:
+    delay(10000);
+  }
+  
+  Serial.println("Connected to wifi");
+  printWiFiStatus();
+
+  Serial.print("Initializing WiFiUDP library and listening on port ");
+  Serial.println(localPort);
+  Udp.begin(localPort);
+}
+
+void loop(){
+
+
+  
+  // IP address of the receiving device, Linux computer's IP address (mine for now because Linux is dead)
+  IPAddress receivingDeviceAddress(192, 168, 1, 6); 
+  unsigned int receivingDevicePort = 2390;  //should be the same in server.js code 
+  
+  value1 = analogRead(pResistor1);
+  value2 = analogRead(pResistor2);
+  value3 = analogRead(pResistor3);
+  Serial.println(value2);
+ 
+  //You can change value "25"
+  if (value1 > 700){
+    sensor1 = 0;
+  }
+  else if (value1 < 700){
+    
+    sensor1 = 1;
+  }
+
+  delay(500); //Small delay
+
+  if (value2 > 150){
+    sensor2 = 0;
+  }
+  else if (value2 < 150){
+    
+    sensor2 = 1;
+  }
+  
+  delay(500); //Small delay
+  
+   if (value3 > 700){
+    sensor3 = 0;
+  }
+  else if (value3 < 700){
+
+   sensor3 = 1;
+  }
+  delay(500); //Small delay
+
+  
+
+   Udp.beginPacket(receivingDeviceAddress, receivingDevicePort);
+
+   Udp.write(sensor1);
+   Udp.write(sensor2);
+   Udp.write(sensor3);
+   
+   Udp.endPacket();
+   Serial.print("sensor 1: ");
+   Serial.println(sensor1);
+    Serial.print("sensor 2: ");
+   Serial.println(sensor2);
+    Serial.print("sensor 3: ");
+   Serial.println(sensor3);
+   
+  
+}
+
+void printWiFiStatus() {
+  // print the SSID of the network you're attached to:
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());
+
+  // print your WiFi shield's IP address:
+  IPAddress ip = WiFi.localIP();
+  Serial.print("My IP Address: ");
+  Serial.println(ip);
+
+  // print the received signal strength:
+  long rssi = WiFi.RSSI();
+  Serial.print("signal strength (RSSI):");
+  Serial.print(rssi);
+  Serial.println(" dBm");
+}
