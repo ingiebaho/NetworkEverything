@@ -1,4 +1,5 @@
-Project Idea: Speaker that plays music based on your mood. Mood can be detected through the user’s heartbeat (a wristband)
+##Project Idea: Speaker that plays music based on your mood. Mood can be detected through the user’s heartbeat (a wristband)##
+
 Define a product
 What is the value proposition? What problem does it solve? (pg. 112) 
 The Value Proposition of any device or product is a characteristic which makes it attractive to consumers. The value proposition of this device is that it is designed to emotionally please to the user. The power of appealing to ethos, one of the most powerful tools, is harnessed by this device as it listens to what the user wants/feels, and plays a song to create an ambiance which mirrors what the user feels internally.  
