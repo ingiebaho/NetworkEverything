@@ -10,4 +10,4 @@ Required hardware:
 
 Software: 
 1. Development of web browser with node.js
-2. Arduino/RPI code to deetct distances
+2. Arduino/RPI code to detect distances
