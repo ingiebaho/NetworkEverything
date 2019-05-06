@@ -32,24 +32,25 @@ socket.on('allOff', (data) => {
 
 
 function displayImage1 () {
-	var myAudio1 = document.getElementById("myAudio1");
-//myAudio1.src = "space.mp3";
+	window.open('https://www.google.com', '_blank');
+	//var myAudio1 = document.getElementById("myAudio1");
 
-var myAudio2 = document.getElementById("myAudio2");
-//myAudio2.src = "woods.mp3";
 
-var myAudio3 = document.getElementById("myAudio3");
-//myAudio3.src = "grave.mp3";
+//var myAudio2 = document.getElementById("myAudio2");
+
+
+//var myAudio3 = document.getElementById("myAudio3");
+
 	
-	var placeholder = document.getElementById("placeholder");
+	//var placeholder = document.getElementById("placeholder");
 
-	placeholder.src = "space.jpg"; // put images in public folder
+	//placeholder.src = "space.jpg"; // put images in public folder
 
-	placeholder.style.opacity = 100;
+	//placeholder.style.opacity = 100;
 	
-	myAudio1.play();
-	myAudio2.pause();
-	myAudio3.pause();
+	//myAudio1.play();
+	//myAudio2.pause();
+	//myAudio3.pause();
 }
 
 function displayImage2 () {
