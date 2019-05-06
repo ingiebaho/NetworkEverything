@@ -6,6 +6,7 @@ back to the web server
 var socket = io();
 
 
+
 socket.on('button1', (data) => {
 	console.log('received button 1 pressed event from webserver: ' + data);
 	displayImage1();
@@ -32,7 +33,11 @@ socket.on('allOff', (data) => {
 
 
 function displayImage1 () {
+	var ctr = 0;
+	while(ctr = 0){
 	window.open('https://www.google.com', '_blank');
+	ctr++;
+	}
 	//var myAudio1 = document.getElementById("myAudio1");
 
 
