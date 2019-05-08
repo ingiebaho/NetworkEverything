@@ -33,11 +33,11 @@ socket.on('allOff', (data) => {
 
 
 function displayImage1 () {
-	var tabOpen = 0;
-	if(tabOpen == 0){
+	//var tabOpen = 0;
+	//if(tabOpen == 0){
 	window.open('https://www.google.com', '_blank');
-	tabOpen = 1;
-	}
+	//tabOpen = 1;
+	//}
 	//var myAudio1 = document.getElementById("myAudio1");
 
 
