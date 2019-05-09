@@ -51,7 +51,7 @@ function ArduinoUDPServerIsListening() {
 }
 
 function ArduinoUDPServerReceivedMessage(message, sender) {
-
+	console.log("Here");
 	// Read the messages received from arudino and check which button which pushed 
 	if (message.readUInt8(0) == 1 ) {
 		console.log( "button 1 pushed");
