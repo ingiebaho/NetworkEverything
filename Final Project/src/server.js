@@ -93,23 +93,5 @@ httpServer.on('connection', () => {
 });
 
 
- //Websocket event handler for UDP messages coming from the browser
- //which is something I dont need
-
-/*webSocket.on('connect', (socket) => {
-	// array for the message
-	// newLEDState[0] = LED number 
-	// newLEDState[1] = LED state 
-	const SIZEOF_LED_DATA = 2;
-	var newLEDState = new Uint8Array(SIZEOF_LED_DATA ); 
-  
-	console.log('Web server socket: Client connected');
-
-
-  // if you get the 'disconnect' message, say the user disconnected
-
-  socket.on('disconnect', () => {
-    console.log('Web server socket: user disconnected');
-  });
-});  */
+ 
 
