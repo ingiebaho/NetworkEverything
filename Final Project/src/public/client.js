@@ -5,7 +5,7 @@ back to the web server
 
 var socket = io();
 
-
+var tabOpen = 0;
 
 socket.on('button1', (data) => {
 	console.log('received button 1 pressed event from webserver: ' + data);
@@ -33,12 +33,11 @@ socket.on('allOff', (data) => {
 
 
 function displayImage1 () {
-	//var tabOpen = 0;
-	//if(tabOpen == 0){
+	
+	if(tabOpen == 0){
 	window.open('https://www.google.com', '_blank');
-	console.log('opening tab');
-	//tabOpen = 1;
-	//}
+	tabOpen = 1;
+	}
 	//var myAudio1 = document.getElementById("myAudio1");
 
 
@@ -100,6 +99,8 @@ var myAudio3 = document.getElementById("myAudio3");
 }
 
 function hideTheImage () {
+	
+	tabOpen = 0;
 	
 	var myAudio1 = document.getElementById("myAudio1");
 //myAudio1.src = "space.mp3";
