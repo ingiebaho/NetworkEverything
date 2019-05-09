@@ -47,7 +47,8 @@ const webSocket = require('socket.io')(httpServer);
 /* Arduino UDP server callback functions */
 
 function ArduinoUDPServerIsListening() {
-	console.log('Arduino UDP Server is listening');
+	let address = arduinoUDPServer.address();
+	console.log('Arduino UDP Server is listening at: '+ address.address + ":" + address.port);
 }
 
 function ArduinoUDPServerReceivedMessage(message, sender) {
