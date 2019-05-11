@@ -54,7 +54,7 @@ function ArduinoUDPServerIsListening() {
 }
 
 function ArduinoUDPServerReceivedMessage(message, sender) {
-
+	console.log("hi");
 	// If the message is a byte we need to read a byte
 	if (message.readUInt8(0) == 0 ) {
 		console.log( "received a 0");
