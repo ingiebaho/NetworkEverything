@@ -28,7 +28,7 @@
 /* UDP server talks to Arduino */
 var dgram = require('dgram');
 var arduinoUDPServer = dgram.createSocket('udp4')
-var MY_PORT_FOR_ARDUINO = 2390;
+var MY_PORT_FOR_ARDUINO = 7000;
 var ARDUINO_PORT_FOR_ME= 5000;
 // var ARDUINO_IP_ADDRESS = '192.168.1.4'; // NETGEAR55
 var ARDUINO_IP_ADDRESS = '192.168.1.19'; // IMNetwork
