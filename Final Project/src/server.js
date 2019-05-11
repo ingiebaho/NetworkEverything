@@ -54,7 +54,7 @@ function ArduinoUDPServerIsListening() {
 }
 
 function ArduinoUDPServerReceivedMessage(message, sender) {
-	console.log("hi");
+
 	// If the message is a byte we need to read a byte
 	if (message.readUInt8(0) == 0 ) {
 		console.log( "received a 0");
@@ -76,9 +76,7 @@ arduinoUDPServer.on( 'message', ArduinoUDPServerReceivedMessage);
 /* HTTP callback functions */
 
 httpServer.listen(HTTP_SERVER_PORT, () => {
-	let address = arduinoUDPServer.address();
-	console.log('Arduino UDP Server is listening at: '+ address.address + ":" + address.port);
-
+	console.log('web server: Listening at', httpServer.address());
 });
 
 httpServer.on('connection', () => {
