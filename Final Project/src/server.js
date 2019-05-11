@@ -53,8 +53,8 @@ function ArduinoUDPServerIsListening() {
 	console.log('Arduino UDP Server is listening');
 }
 
+console.log(message.readUInt8(0));
 function ArduinoUDPServerReceivedMessage(message, sender) {
-	console.log(message.readUInt8(0));
 	// If the message is a byte we need to read a byte
 	if (message.readUInt8(0) == 1 ) {
 		console.log( "button1");
