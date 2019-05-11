@@ -28,7 +28,7 @@
 /* UDP server talks to Arduino */
 var dgram = require('dgram');
 var arduinoUDPServer = dgram.createSocket('udp4')
-var MY_PORT_FOR_ARDUINO = 7000;
+var MY_PORT_FOR_ARDUINO = 2390;
 var ARDUINO_PORT_FOR_ME= 5000;
 // var ARDUINO_IP_ADDRESS = '192.168.1.4'; // NETGEAR55
 var ARDUINO_IP_ADDRESS = '192.168.1.19'; // IMNetwork
@@ -76,7 +76,9 @@ arduinoUDPServer.on( 'message', ArduinoUDPServerReceivedMessage);
 /* HTTP callback functions */
 
 httpServer.listen(HTTP_SERVER_PORT, () => {
-	console.log('web server: Listening at', httpServer.address());
+	let address = arduinoUDPServer.address();
+	console.log('Arduino UDP Server is listening at: '+ address.address + ":" + address.port);
+
 });
 
 httpServer.on('connection', () => {
