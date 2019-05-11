@@ -112,7 +112,7 @@ httpServer.on('connection', () => {
 			//SIZEOF_LED_DATA,
 			//ARDUINO_PORT_FOR_ME, 
 			//ARDUINO_IP_ADDRESS);
-  });
+ // });
 
   //socket.on('redLEDOff', () => {
 	//	console.log('red LED off');
@@ -138,7 +138,7 @@ httpServer.on('connection', () => {
 	//		SIZEOF_LED_DATA,
 	//		ARDUINO_PORT_FOR_ME, 
 	//		ARDUINO_IP_ADDRESS);
-  });
+ // });
 
   //socket.on('greenLEDOff', () => {
 //		console.log('green LED off');
@@ -151,9 +151,9 @@ httpServer.on('connection', () => {
 			//SIZEOF_LED_DATA,
 			//ARDUINO_PORT_FOR_ME, 
 			//ARDUINO_IP_ADDRESS);
-  });
+  //});
 
   
   // if you get the 'disconnect' message, say the user disconnected
  
-});
+//});
