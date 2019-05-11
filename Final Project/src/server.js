@@ -125,7 +125,7 @@ httpServer.on('connection', () => {
 	//		SIZEOF_LED_DATA,
 	//		ARDUINO_PORT_FOR_ME, 
 	//		ARDUINO_IP_ADDRESS);
-  });
+ // });
 
  // socket.on('greenLEDOn', () => {
 //		console.log('green LED on');
