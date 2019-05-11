@@ -50,8 +50,7 @@ const webSocket = require('socket.io')(httpServer);
 /* Arduino UDP server callback functions */
 
 function ArduinoUDPServerIsListening() {
-	let address = arduinoUDPServer.address();
-	console.log('Arduino UDP Server is listening at: '+ address.address + ":" + address.port);
+	console.log('Arduino UDP Server is listening');
 }
 
 function ArduinoUDPServerReceivedMessage(message, sender) {
@@ -85,4 +84,98 @@ httpServer.on('connection', () => {
 });
 
 
+// Websocket event handler 
+// for UDP messages coming from the browser
 
+webSocket.on('connect', (socket) => {
+	// array for the message
+	// newLEDState[0] = LED number 
+	// newLEDState[1] = LED state 
+	const SIZEOF_LED_DATA = 2;
+	var newLEDState = new Uint8Array(SIZEOF_LED_DATA ); 
+  
+	console.log('Web server socket: Client connected');
+
+  socket.on('redLEDOn', () => {
+		console.log('red LED on');
+		newLEDState[0] = 0;  // Red is LED number 0
+		newLEDState[1] = 1; // turn on the LED
+    // Send the message to Arduino
+    arduinoUDPServer.send(
+			newLEDState,
+			0, // offset to the message start in the buffer
+			SIZEOF_LED_DATA,
+			ARDUINO_PORT_FOR_ME, 
+			ARDUINO_IP_ADDRESS);
+  });
+
+  socket.on('redLEDOff', () => {
+		console.log('red LED off');
+		newLEDState[0] = 0;  // Red is LED number 0
+		newLEDState[1] = 0; // turn off the LED
+    // Send the message to Arduino
+    arduinoUDPServer.send(
+			newLEDState,
+			0, // offset to the message start in the buffer
+			SIZEOF_LED_DATA,
+			ARDUINO_PORT_FOR_ME, 
+			ARDUINO_IP_ADDRESS);
+  });
+
+  socket.on('greenLEDOn', () => {
+		console.log('green LED on');
+		newLEDState[0] = 1;  // green is LED number 1
+		newLEDState[1] = 1; // turn on the LED
+    // Send the message to Arduino
+    arduinoUDPServer.send(
+			newLEDState,
+			0, // offset to the message start in the buffer
+			SIZEOF_LED_DATA,
+			ARDUINO_PORT_FOR_ME, 
+			ARDUINO_IP_ADDRESS);
+  });
+
+  socket.on('greenLEDOff', () => {
+		console.log('green LED off');
+		newLEDState[0] = 1;  // green is LED number 1
+		newLEDState[1] = 0; // turn off the LED
+    // Send the message to Arduino
+    arduinoUDPServer.send(
+			newLEDState,
+			0, // offset to the message start in the buffer
+			SIZEOF_LED_DATA,
+			ARDUINO_PORT_FOR_ME, 
+			ARDUINO_IP_ADDRESS);
+  });
+
+  socket.on('blueLEDOn', () => {
+		console.log('blue LED on');
+		newLEDState[0] = 2;  // blue is LED number 2
+		newLEDState[1] = 1; // turn on the LED
+    // Send the message to Arduino
+    arduinoUDPServer.send(
+			newLEDState,
+			0, // offset to the message start in the buffer
+			SIZEOF_LED_DATA,
+			ARDUINO_PORT_FOR_ME, 
+			ARDUINO_IP_ADDRESS);
+  });
+
+  socket.on('blueLEDOff', () => {
+		console.log('blue LED off');
+		newLEDState[0] = 2;  // blue is LED number 2
+		newLEDState[1] = 0; // turn off the LED
+    // Send the message to Arduino
+    arduinoUDPServer.send(
+			newLEDState,
+			0, // offset to the message start in the buffer
+			SIZEOF_LED_DATA,
+			ARDUINO_PORT_FOR_ME, 
+			ARDUINO_IP_ADDRESS);
+  });
+
+  // if you get the 'disconnect' message, say the user disconnected
+  socket.on('disconnect', () => {
+    console.log('Web server socket: user disconnected');
+  });
+});
