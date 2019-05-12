@@ -1,3 +1,5 @@
+
+
 /*
 	UDP And HTTP Server
 	Context: node.js
@@ -23,7 +25,7 @@
 /* UDP server talks to Arduino */
 var dgram = require('dgram');
 var arduinoUDPServer = dgram.createSocket('udp4')
-var MY_PORT_FOR_ARDUINO = 7000;	//should be receiving port in Adruino sketch  
+var MY_PORT_FOR_ARDUINO = 2390;	//should be receiving port in Adruino sketch  
 
 /* This is for server to talk to Arduino, which I dont need now   
 var ARDUINO_PORT_FOR_ME= 5000; 
@@ -47,11 +49,12 @@ const webSocket = require('socket.io')(httpServer);
 /* Arduino UDP server callback functions */
 
 function ArduinoUDPServerIsListening() {
-	console.log('Arduino UDP Server is listening');
+	let address = arduinoUDPServer.address();
+	console.log('Arduino UDP Server is listening at: '+ address.address + ":" + address.port);
 }
 
 function ArduinoUDPServerReceivedMessage(message, sender) {
-
+	console.log("Here");
 	// Read the messages received from arudino and check which button which pushed 
 	if (message.readUInt8(0) == 1 ) {
 		console.log( "button 1 pushed");
@@ -93,22 +96,5 @@ httpServer.on('connection', () => {
 });
 
 
- //Websocket event handler for UDP messages coming from the browser
- //which is something I dont need
+ 
 
-/*webSocket.on('connect', (socket) => {
-	// array for the message
-	// newLEDState[0] = LED number 
-	// newLEDState[1] = LED state 
-	const SIZEOF_LED_DATA = 2;
-	var newLEDState = new Uint8Array(SIZEOF_LED_DATA ); 
-  
-	console.log('Web server socket: Client connected');
-
-
-  // if you get the 'disconnect' message, say the user disconnected
-
-  socket.on('disconnect', () => {
-    console.log('Web server socket: user disconnected');
-  });
-});  */
