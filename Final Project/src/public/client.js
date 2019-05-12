@@ -56,9 +56,14 @@ function displayImage3 () {
 
 function hideTheImage () {
 	
-	tabOpen = 0;
-	myWindow.close();
-	console.log("closing tab");
+	if(tabOpen == 1){
+		myWindow.close();
+		console.log("closing tab");
+		tabOpen = 0;
+	}
+	
+	
+	
 	
 	 
 	
