@@ -48,6 +48,7 @@ function displayImage1 () {
 
 function displayImage2 () {
 	
+}
 
 function displayImage3 () {
 	
