@@ -43,24 +43,7 @@ function displayImage1 () {
 		
 	tabOpen = 1;
 	}
-	//var myAudio1 = document.getElementById("myAudio1");
-
-
-//var myAudio2 = document.getElementById("myAudio2");
-
-
-//var myAudio3 = document.getElementById("myAudio3");
-
 	
-	//var placeholder = document.getElementById("placeholder");
-
-	//placeholder.src = "space.jpg"; // put images in public folder
-
-	//placeholder.style.opacity = 100;
-	
-	//myAudio1.play();
-	//myAudio2.pause();
-	//myAudio3.pause();
 }
 
 function displayImage2 () {
