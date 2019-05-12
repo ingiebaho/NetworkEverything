@@ -11,6 +11,8 @@ var myWindow1;
 var tabOpen2 = 0;
 var myWindow2;
 
+var tabOpen3 = 0;
+var myWindow3;
 
 socket.on('button1', (data) => {
 	console.log('received button 1 pressed event from webserver: ' + data);
