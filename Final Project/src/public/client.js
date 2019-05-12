@@ -35,7 +35,11 @@ socket.on('allOff', (data) => {
 function displayImage1 () {
 	
 	if(tabOpen == 0){
-	window.open('https://www.google.com', '_blank');
+		
+	//window.open('https://www.google.com', '_blank');
+		
+	myWindow = window.open("https://google.com", "myWindow", "width=200, height=100");
+		
 	tabOpen = 1;
 	}
 	//var myAudio1 = document.getElementById("myAudio1");
@@ -101,6 +105,7 @@ var myAudio3 = document.getElementById("myAudio3");
 function hideTheImage () {
 	
 	tabOpen = 0;
+	myWindow.close(); 
 	
 	var myAudio1 = document.getElementById("myAudio1");
 //myAudio1.src = "space.mp3";
