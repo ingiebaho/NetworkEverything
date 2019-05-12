@@ -43,7 +43,7 @@ function displayImage1 () {
 	
 	if(tabOpen1 == 0){
 
-	myWindow1 = window.open("https://www.google.com", "myWindow", "width=200,height=100");
+	myWindow1 = window.open("http://192.168.1.20:8081/", "myWindow", "width=200,height=100");
 	tabOpen1 = 1;
 	}
 	
