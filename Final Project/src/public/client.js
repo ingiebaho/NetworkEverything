@@ -7,6 +7,8 @@ var socket = io();
 
 var tabOpen = 0;
 
+var myWindow;
+
 socket.on('button1', (data) => {
 	console.log('received button 1 pressed event from webserver: ' + data);
 	displayImage1();
