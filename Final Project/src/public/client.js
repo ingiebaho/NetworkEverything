@@ -6,7 +6,7 @@ back to the web server
 var socket = io();
 
 var tabOpen = 0;
-
+var myWindow;
 
 
 socket.on('button1', (data) => {
@@ -37,8 +37,8 @@ socket.on('allOff', (data) => {
 function displayImage1 () {
 	
 	if(tabOpen == 0){
-		
-	window.open("https://www.google.com", '_blank');
+	myWindow = window.open("https://wwww.google.com", "", "");	
+	//window.open("https://www.google.com", '_blank');
 		
 	tabOpen = 1;
 	}
@@ -105,7 +105,7 @@ var myAudio3 = document.getElementById("myAudio3");
 function hideTheImage () {
 	
 	tabOpen = 0;
-	
+	myWindow = window.close();
 	
 	var myAudio1 = document.getElementById("myAudio1");
 //myAudio1.src = "space.mp3";
