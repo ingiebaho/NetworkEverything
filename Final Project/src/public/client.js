@@ -39,8 +39,7 @@ function displayImage1 () {
 	if(tabOpen == 0){
 
 	myWindow = window.open("", "myWindow", "width=200,height=100");
- 	myWindow.document.write("<p>This is 'myWindow'</p>");
-		
+        myWindow.document.write("<p>This is 'myWindow'</p>");	
 	tabOpen = 1;
 	}
 	
