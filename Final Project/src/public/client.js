@@ -37,8 +37,9 @@ socket.on('allOff', (data) => {
 function displayImage1 () {
 	
 	if(tabOpen == 0){
-	myWindow = window.open("", "", "");	
-	//window.open("https://www.google.com", '_blank');
+
+	myWindow = window.open("", "myWindow", "width=200,height=100");
+ 	myWindow.document.write("<p>This is 'myWindow'</p>");
 		
 	tabOpen = 1;
 	}
@@ -105,7 +106,7 @@ var myAudio3 = document.getElementById("myAudio3");
 function hideTheImage () {
 	
 	tabOpen = 0;
-	myWindow = window.close();
+	myWindow.close();
 	console.log("closing tab");
 	
 	var myAudio1 = document.getElementById("myAudio1");
