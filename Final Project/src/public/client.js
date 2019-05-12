@@ -5,8 +5,8 @@ back to the web server
 
 var socket = io();
 
-var tabOpen = 0;
-var myWindow;
+var tabOpen1 = 0;
+var myWindow1;
 
 
 socket.on('button1', (data) => {
@@ -36,11 +36,11 @@ socket.on('allOff', (data) => {
 
 function displayImage1 () {
 	
-	if(tabOpen == 0){
+	if(tabOpen1 == 0){
 
-	myWindow = window.open("", "myWindow", "width=200,height=100");
-        myWindow.document.write("<p>This is 'myWindow'</p>");	
-	tabOpen = 1;
+	myWindow1 = window.open("", "myWindow", "width=200,height=100");
+        myWindow1.document.write("<p>This is 'myWindow'</p>");	
+	tabOpen1 = 1;
 	}
 	
 }
@@ -56,10 +56,10 @@ function displayImage3 () {
 
 function hideTheImage () {
 	
-	if(tabOpen == 1){
-		myWindow.close();
+	if(tabOpen1 == 1){
+		myWindow1.close();
 		console.log("closing tab");
-		tabOpen = 0;
+		tabOpen1 = 0;
 	}
 	
 	
