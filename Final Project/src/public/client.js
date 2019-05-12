@@ -38,7 +38,7 @@ function displayImage1 () {
 	
 	if(tabOpen == 0){
 		
-	window.open('https://www.google.com', '_blank');
+	window.open("https://www.google.com", '_blank');
 		
 	tabOpen = 1;
 	}
