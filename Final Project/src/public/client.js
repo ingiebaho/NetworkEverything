@@ -43,7 +43,7 @@ function displayImage1 () {
 	
 	if(tabOpen1 == 0){
 
-	myWindow1 = window.open("http://192.168.1.20:8081/", "myWindow", "width=200,height=100");
+	myWindow1 = window.open("http://10.225.161.136:8081/", "myWindow", "width=200,height=100");
 	tabOpen1 = 1;
 	}
 	
@@ -52,7 +52,7 @@ function displayImage1 () {
 function displayImage2 () {
 	if(tabOpen2 == 0){
 
-	myWindow2 = window.open("https://www.bing.com", "myWindow", "width=200,height=100");
+	myWindow2 = window.open("http://10.225.161.137:8081/", "myWindow", "width=200,height=100");
 	tabOpen2 = 1;
 	}
 	
@@ -62,7 +62,7 @@ function displayImage3 () {
 	
 	if(tabOpen3 == 0){
 
-	myWindow3 = window.open("https://www.yahoo.com", "myWindow", "width=200,height=100");
+	myWindow3 = window.open("http://10.225.161.135:8081/", "myWindow", "width=200,height=100");
 	tabOpen3 = 1;
 	}
 	
