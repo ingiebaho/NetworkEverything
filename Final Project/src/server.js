@@ -27,10 +27,6 @@ var dgram = require('dgram');
 var arduinoUDPServer = dgram.createSocket('udp4')
 var MY_PORT_FOR_ARDUINO = 7000;	//should be receiving port in Adruino sketch  
 
-/* This is for server to talk to Arduino, which I dont need now   
-var ARDUINO_PORT_FOR_ME= 5000; 
-var ARDUINO_IP_ADDRESS = '192.168.1.4';
-*/ 
 
 /* HTTP server talks to browser */
 const http = require('http')
