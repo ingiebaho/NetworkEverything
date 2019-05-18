@@ -4,7 +4,7 @@ back to the web server
 */
 
 var socket = io();
-
+//flags to detect is a tab has been opened by the server. initialized to no.
 var tabOpen1 = 0;
 var myWindow1;
 
@@ -38,7 +38,7 @@ socket.on('allOff', (data) => {
 
 
 
-
+//each funtction takes us to a different webcam server
 function displayImage1 () {
 	
 	if(tabOpen1 == 0){
