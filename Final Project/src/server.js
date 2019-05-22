@@ -4,10 +4,9 @@
 	UDP And HTTP Server
 	Context: node.js
 	
-	Receive data from Arduino 
-	Serve a web page to a browser displaying information decided by Arduino 
-	
-	Web server provided by modules "http" and "express"
+	This code receives button pushes from Arduino, which function as toggle switches. 
+	This server code serves a web page to a browser which displays different information. 
+	This information displayed depends on which buttons have been toggled on the on Arudino MKR1010
 
 	Communication with Arduino is via a UDP socket
 	provided by module "dgram"
