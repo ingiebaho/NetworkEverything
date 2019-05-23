@@ -1,10 +1,19 @@
+	<!-- This HTML code is run by the script client.js. It dislplays four button, 3 of the buttons 
+	have a location written on them. Each button indicates somehwere the user can virtually 
+	visit. The last button is simply an exit button
+
+	Ingie Baho-->
+
 <!doctype html>
 <html>
 	
 	<head>
-		<meta charset="utf8"/>
-		<title>Exploring NYUAD's Campus</title>
+		<meta charset="utf8"/> <!-- specifies the character encoding for the HTML document -->
+		<title>Exploring NYUAD's Campus</title> <!-- title for the web browser -->
 		
+		<!-- Creating 4 CSS buttons, each to open different tab -->
+
+
 		<style>
 			body{
 			font-size: 2em;
@@ -17,9 +26,9 @@
  				 background-color: #4CAF50;
  				 border: yes;
  				 color: white;
-  				padding: 15px 25px;
-  				text-align: center;
-  				font-size: 16px;
+  				 padding: 15px 25px;
+  				 text-align: center;
+  				 font-size: 16px;
  				 cursor: pointer;
 			}
 
@@ -69,26 +78,27 @@
 		
 	</head>
 	
-	<body background="nyuadcampus.jpg" >
+	<body background="nyuadcampus.jpg" >	<!-- This places an image as the background. The image should also be in "public" folder -->
 					
 		<article>
-  			<center><h1><big>Glimpses of Student Life at NYUAD </big> </h1> </center>
+			<!-- Descriptive text on web browser -->
+  			<center><h1><big>Glimpses of Student Life at NYUAD </big> </h1> </center> 
  			<center><p><big> Use the buttons on the remote controller to navigate to another location on campus.</big></p></center>
 			<center><p><big>Click the red 'exit' button to come back to this page.</big></p></center>
 		</article>
 		
-		<center><table style="width:100%; max-width: 500px; height:300px;">
+		<center><table style="width:100%; max-width: 500px; height:300px;"> <!-- Creates table to organize the buttons -->
 			<tr>
 				<td>
 
 					
-					<button class="button1">Dining Hall</button>
+					<button class="button1">Dining Hall</button> <!-- Placing button 1 in table -->
 				</td>
 				<td>
 					
 
 					
-					<button class="button2">Library</button>
+					<button class="button2">Library</button> <!-- Placing button 2 in table -->
 				</td>
 			</tr>
 			<tr>
@@ -96,13 +106,13 @@
 					
 
 					
-					<button class="button3">Baraha</button>
+					<button class="button3">Baraha</button> <!-- Placing button 3 in table -->
 				</td>
 				<td>
 					
 
 					
-					<button class="button4">Exit</button>
+					<button class="button4">Exit</button> <!-- Placing button 4 in table -->
 				</td>
 			</tr>
 			
@@ -111,8 +121,8 @@
 					<a>
 					
 	</body>
-
-		<script src="/socket.io/socket.io.js"></script>
+		<!-- Directing the HTML code to the necessary script: -->
+		<script src="/socket.io/socket.io.js"></script> 
 		<script src="client.js"></script>
 </html>
 
