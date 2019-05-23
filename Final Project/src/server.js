@@ -56,12 +56,12 @@ function ArduinoUDPServerReceivedMessage(message, sender) {
 		// Now send a message to client.js
 		webSocket.emit('button1', 1);
 	}
-	if (message.readUInt8(1) == 1 ) {	//byte coming from button 2
+	if (message.readUInt8(1) == 1 ) {	//This indicates that the second byte (coming from button 2) is pushed
 		console.log( "button 2 pushed");
 		// Now send a message to client.js
 		webSocket.emit('button2', 2);
 	}
-	if (message.readUInt8(2) == 1 ) {		//byte coming from button 3
+	if (message.readUInt8(2) == 1 ) {		//This indicates that the third byte (coming from button 3) is pushed
 		console.log( "button 3 pushed");
 		// Now send a message to client.js
 		webSocket.emit('button3', 3);
@@ -79,6 +79,7 @@ function ArduinoUDPServerReceivedMessage(message, sender) {
 arduinoUDPServer.bind( MY_PORT_FOR_ARDUINO );
 arduinoUDPServer.on( 'listening', ArduinoUDPServerIsListening);
 arduinoUDPServer.on( 'message', ArduinoUDPServerReceivedMessage);
+
 
 /* HTTP callback functions */
 
