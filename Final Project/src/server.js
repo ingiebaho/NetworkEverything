@@ -24,10 +24,10 @@
 /* UDP server talks to Arduino */
 var dgram = require('dgram');
 var arduinoUDPServer = dgram.createSocket('udp4')
-var MY_PORT_FOR_ARDUINO = 7000;	//should be receiving port in Adruino sketch  
+var MY_PORT_FOR_ARDUINO = 7000;	//should be receiving port in Adruino code  
 
 
-/* HTTP server talks to browser */
+/* HTTP server talks to client (browser) */
 const http = require('http')
 const express = require('express'); // web server application
 const app = express();        // instantiate express server
@@ -51,23 +51,23 @@ function ArduinoUDPServerIsListening() {
 function ArduinoUDPServerReceivedMessage(message, sender) {
 	
 	// Read the messages received from arudino and check which button which pushed 
-	if (message.readUInt8(0) == 1 ) {
+	if (message.readUInt8(0) == 1 ) {	//This indicates that the first byte (coming from button 1) is pushed
 		console.log( "button 1 pushed");
 		// Now send a message to client.js
 		webSocket.emit('button1', 1);
 	}
-	if (message.readUInt8(1) == 1 ) {
+	if (message.readUInt8(1) == 1 ) {	//byte coming from button 2
 		console.log( "button 2 pushed");
 		// Now send a message to client.js
 		webSocket.emit('button2', 2);
 	}
-	if (message.readUInt8(2) == 1 ) {
+	if (message.readUInt8(2) == 1 ) {		//byte coming from button 3
 		console.log( "button 3 pushed");
 		// Now send a message to client.js
 		webSocket.emit('button3', 3);
 	}
-	if (message.readUInt8(0) == 0 && message.readUInt8(1) == 0 && message.readUInt8(2) == 0 ) {
-		console.log( "all buttons are off");
+	if (message.readUInt8(0) == 0 && message.readUInt8(1) == 0 && message.readUInt8(2) == 0 ) {	//check to see if all bytes are 0, indicating that all buttons are off
+		console.log( "all buttons are off"); 
 		// Now send a message to client.js
 		webSocket.emit('allOff', 0);
 	}
